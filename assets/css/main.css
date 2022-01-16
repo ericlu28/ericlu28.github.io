@@ -245,19 +245,19 @@ input, select, textarea {
 		}
 
 		h3 {
-			font-size: 1em;
-		}
-
-		h4 {
 			font-size: 0.8em;
 		}
 
-		h5 {
+		h4 {
 			font-size: 0.6em;
 		}
 
+		h5 {
+			font-size: 0.5em;
+		}
+
 		h6 {
-			font-size: 0.6em;
+			font-size: 0.5em;
 		}
 
 	}
