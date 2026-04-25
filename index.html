@@ -1,126 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eric Lu</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+---
+layout: default
+title: ""
+---
 
-  <!-- Nav -->
-  <nav class="site-nav">
-    <div class="inner">
-      <a href="index.html" class="brand">ericlu28</a>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
-    </div>
-  </nav>
+<main class="container-narrow">
 
-  <main class="container-narrow">
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="row g-4 align-items-start" style="display:flex; gap:2.5rem; flex-wrap:wrap;">
-        <!-- Photo -->
-        <div style="flex-shrink:0;">
-          <img
-            src="img/profile.jpg"
-            alt="Eric Lu"
-            class="hero-photo"
-            onerror="this.outerHTML='<div class=\'hero-photo-placeholder\'><span>photo</span></div>'"
-          />
+  <!-- Hero -->
+  <section class="hero">
+    <div class="row g-4 align-items-start" style="display:flex; gap:2.5rem; flex-wrap:wrap;">
+      <!-- Photo -->
+      <div style="flex-shrink:0;">
+        <img
+          src="img/profile.jpg"
+          alt="Eric Lu"
+          class="hero-photo"
+          onerror="this.outerHTML='<div class=\'hero-photo-placeholder\'><span>photo</span></div>'"
+        />
+      </div>
+      <!-- Bio -->
+      <div style="flex:1; min-width:220px;">
+        <h1 class="display-name hero-name">Eric Lu</h1>
+        <p class="hero-role">Software Engineer @ Adobe</p>
+        <div class="hero-meta">
+          <span><i class="bi bi-geo-alt" style="margin-right:0.3em;"></i>San Francisco, CA</span>
+          <span><i class="bi bi-mortarboard" style="margin-right:0.3em;"></i>UC Berkeley</span>
+          <span><i class="bi bi-house" style="margin-right:0.3em;"></i>Hometown: San Diego, CA</span>
         </div>
-        <!-- Bio -->
-        <div style="flex:1; min-width:220px;">
-          <h1 class="display-name hero-name">Eric Lu</h1>
-          <p class="hero-role">Software Engineer @ Adobe</p>
-          <div class="hero-meta">
-            <span><i class="bi bi-geo-alt" style="margin-right:0.3em;"></i>San Francisco, CA</span>
-            <span><i class="bi bi-mortarboard" style="margin-right:0.3em;"></i>UC Berkeley</span>
-            <span><i class="bi bi-house" style="margin-right:0.3em;"></i>Hometown: San Diego, CA</span>
-          </div>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/ericlu28/" target="_blank" rel="noopener" title="LinkedIn">
-              <i class="bi bi-linkedin"></i>
-            </a>
-            <a href="https://github.com/ericlu28" target="_blank" rel="noopener" title="GitHub">
-              <i class="bi bi-github"></i>
-            </a>
-            <a href="mailto:ealu@berkeley.edu" title="Email">
-              <i class="bi bi-envelope"></i>
-            </a>
-          </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/ericlu28/" target="_blank" rel="noopener" title="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href="https://github.com/ericlu28" target="_blank" rel="noopener" title="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="mailto:ealu@berkeley.edu" title="Email">
+            <i class="bi bi-envelope"></i>
+          </a>
         </div>
       </div>
-    </section>
-
-    <!-- About -->
-    <section>
-      <h2 class="section-title">About</h2>
-      <p style="max-width:620px; font-size:0.95rem;">
-        CS &amp; Data Science grad from UC Berkeley. I care about building clean, reliable software and understanding the systems underneath.
-        At Adobe I work on &hellip; <!-- TODO: fill in your team/focus -->
-        Outside of work I golf, surf, and play poker.
-      </p>
-    </section>
-
-    <!-- Projects -->
-    <section>
-      <h2 class="section-title">Projects</h2>
-      <div class="project-grid">
-
-        <div class="project-card">
-          <h3>CS 61A</h3>
-          <p>Structure and Interpretation of Computer Programs — coursework and projects.</p>
-          <span class="tag">Python</span>
-          <span class="tag">Scheme</span>
-          <br/>
-          <a class="project-link" href="https://github.com/ericlu28/cs61a" target="_blank" rel="noopener">
-            <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
-          </a>
-        </div>
-
-        <div class="project-card">
-          <h3>CS 61B — Data Structures</h3>
-          <p>Implementations of core data structures and algorithms: trees, graphs, hashing, sorting.</p>
-          <span class="tag">Java</span>
-          <br/>
-          <a class="project-link" href="https://github.com/ericlu28/cs61b" target="_blank" rel="noopener">
-            <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
-          </a>
-        </div>
-
-        <div class="project-card">
-          <h3>Data 8 — Principles &amp; Techniques of Data Science</h3>
-          <p>Statistical inference, A/B testing, regression, and classification in Python.</p>
-          <span class="tag">Python</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">Pandas</span>
-          <br/>
-          <a class="project-link" href="https://github.com/ericlu28/data8" target="_blank" rel="noopener">
-            <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="inner">
-      <span>&copy; 2026 Eric Lu</span>
-      <span>San Francisco, CA</span>
     </div>
-  </footer>
+  </section>
 
-</body>
-</html>
+  <!-- About -->
+  <section>
+    <h2 class="section-title">About</h2>
+    <p style="max-width:620px; font-size:0.95rem;">
+      CS &amp; Data Science grad from UC Berkeley. I care about building clean, reliable software and understanding the systems underneath.
+      At Adobe I work on &hellip; <!-- TODO: fill in your team/focus -->
+      Outside of work I golf, surf, and play poker.
+    </p>
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <h2 class="section-title">Projects</h2>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <h3>CS 61A</h3>
+        <p>Structure and Interpretation of Computer Programs — coursework and projects.</p>
+        <span class="tag">Python</span>
+        <span class="tag">Scheme</span>
+        <br/>
+        <a class="project-link" href="https://github.com/ericlu28/cs61a" target="_blank" rel="noopener">
+          <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
+        </a>
+      </div>
+
+      <div class="project-card">
+        <h3>CS 61B — Data Structures</h3>
+        <p>Implementations of core data structures and algorithms: trees, graphs, hashing, sorting.</p>
+        <span class="tag">Java</span>
+        <br/>
+        <a class="project-link" href="https://github.com/ericlu28/cs61b" target="_blank" rel="noopener">
+          <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
+        </a>
+      </div>
+
+      <div class="project-card">
+        <h3>Data 8 — Principles &amp; Techniques of Data Science</h3>
+        <p>Statistical inference, A/B testing, regression, and classification in Python.</p>
+        <span class="tag">Python</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Pandas</span>
+        <br/>
+        <a class="project-link" href="https://github.com/ericlu28/data8" target="_blank" rel="noopener">
+          <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>

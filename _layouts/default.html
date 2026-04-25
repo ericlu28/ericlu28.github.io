@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }}{% if page.title %} — {% endif %}Eric Lu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="inner">
+      <a href="{{ '/' | relative_url }}" class="brand">ericlu28</a>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' or page.url == '/index.html' %} class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ '/resume.html' | relative_url }}"{% if page.url contains '/resume' %} class="active"{% endif %}>Resume</a></li>
+        <li><a href="{{ '/blog.html' | relative_url }}"{% if page.url contains '/blog' %} class="active"{% endif %}>Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {{ content }}
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>&copy; 2026 Eric Lu</span>
+      <span>San Francisco, CA</span>
+    </div>
+  </footer>
+
+</body>
+</html>

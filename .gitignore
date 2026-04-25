@@ -1,1 +1,5 @@
 plans/
+_site/
+.jekyll-cache/
+Gemfile.lock
+.ruby-version
