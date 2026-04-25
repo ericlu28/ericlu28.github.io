@@ -21,4 +21,19 @@ layout: default
     {{ content }}
   </article>
 
+  <nav class="post-nav">
+    <div class="post-nav-item post-nav-prev">
+      {% if page.previous %}
+        <span class="post-nav-label">Previous</span>
+        <a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a>
+      {% endif %}
+    </div>
+    <div class="post-nav-item post-nav-next">
+      {% if page.next %}
+        <span class="post-nav-label">Next</span>
+        <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
+      {% endif %}
+    </div>
+  </nav>
+
 </main>
