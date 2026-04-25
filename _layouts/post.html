@@ -5,9 +5,16 @@ layout: default
 <main class="container-narrow">
 
   <div class="post-header">
-    <p class="post-back"><a href="{{ '/blog.html' | relative_url }}">&larr; Blog</a></p>
+    <p class="post-back"><a href="{{ '/blog/' | relative_url }}">&larr; Blog</a></p>
     <h1 class="post-heading">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</p>
+    <p class="post-meta">
+      {{ page.date | date: "%B %-d, %Y" }}
+      <span class="post-meta-sep">&middot;</span>
+      {% assign words = content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 %}
+      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+      {{ minutes }} min read
+    </p>
   </div>
 
   <article class="post-content">

@@ -1,0 +1,217 @@
+---
+title: "Gardener: Building Agents for Continuous Codebase Health Improvements"
+date: 2026-04-24
+---
+
+## Background
+
+Earlier this month, my company ran an AI hack week: a dedicated week-long sprint to build something truly production-grade. Not just a proof of concept or localhost:3000 demo that would be forgotten about for business initiatives next week.
+
+We had a few guiding questions:
+1. What's the right architecture in an AI-first world, given that microservices make it hard for engineers to trace relationships across a system?
+2. What should the SDLC look like when AI can participate in every phase?
+3. How do we responsibly assess the risk of AI recommendations, given that blindly following them can quietly degrade a system's health?
+4. And how do we make a dent in the 80% of engineering time that isn't coding: the meetings, debates, and analysis?
+
+That last question led to a different angle entirely: what if, instead of augmenting the 80%, we introduced AI-driven coding that happens outside of working hours? Agents that run on a schedule, assess risk before touching anything, and instrument fixes for security and reliability, autonomously shipping pull requests while the team sleeps.
+
+What it led to was Gardener: autonomous agents that continuously tend to your codebase, shipping fixes and squashing bugs (literally) while the team is off the clock.
+
+---
+
+## Considerations
+
+Before settling on an architecture, I evaluated three scheduling platforms: [**Cursor Automations**](https://cursor.com/docs/cloud-agent/automations), [**Claude Code Routines**](https://code.claude.com/docs/en/routines), and [**Jenkins**](https://www.jenkins.io/solutions/pipeline/).
+
+Cursor Automations and Claude Code Routines are both compelling, purpose-built for exactly this kind of scheduled agent work. The problem is that both would mean running our agents on someone else's infrastructure. We already have CI/CD platforms in place, and the idea of routing production codebase access through a third-party cloud didn't sit right. (Our company also has a way of making that decision for you.)
+
+Jenkins won out for practical reasons: it's already in use across the team, the execution environment is fully under our control, and every engineer who needs to debug a failed run already knows how to navigate Jenkins logs.
+
+The more important design decision was to keep the cron scheduling or workflow trigger out of the agent logic entirely. That means swapping Jenkins for Claude Code Routines, a GitHub Actions workflow, a Slack slash command, or anything else is a simple change. The scheduling layer is intentionally thin.
+
+---
+
+## Architecture
+
+Gardener runs scheduled agents via Jenkins cron jobs. Each agent scans a registered set of repos, finds one issue per run, and automatically opens a pull request with no human intervention required.
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true });</script>
+
+<div class="mermaid">
+sequenceDiagram
+    autonumber
+
+    box Jenkins
+        participant orch as Orchestrator (cron)
+        participant worker as Worker Job
+    end
+    box Pre-scan
+        participant prescan as Semgrep · gtags · CodeQL
+    end
+    participant claude as Claude Agent (Bedrock)
+    box Git
+        participant repo as Target Repo
+    end
+
+    rect rgb(245, 245, 245)
+        note over orch,worker: Schedule
+        orch->>orch: read repos/*.yaml
+        par for each repo (parallel)
+            orch->>worker: trigger worker
+        end
+    end
+
+    rect rgb(245, 245, 245)
+        note over worker,repo: Pre-Agent Enrichment
+        worker->>repo: clone
+        worker->>prescan: run static analysis
+        note right of prescan: writes semgrep-findings.json<br/>codeql-results.sarif · GTAGS
+    end
+
+    rect rgb(245, 245, 245)
+        note over worker,repo: Agent Reasoning Loop
+        worker->>+claude: invoke with prompt
+        claude->>repo: read AGENT_CONTEXT.md
+        claude->>claude: read scan findings
+        claude->>repo: grep heuristics (Layer 2)
+        note right of claude: rank & select one finding<br/>apply safety checks
+        claude->>repo: implement fix on new branch
+        claude->>claude: test changes
+        claude-->>-repo: open PR
+    end
+</div>
+
+---
+
+## Implementation
+
+### The Orchestrator/Worker Pattern
+
+The orchestrator is a thin scheduler that fires on a cron schedule, resolves which repos have opted in for *gardening*, and triggers a parallel worker build for each one.
+
+```groovy
+pipeline {
+    triggers { cron('0 20 * * *') }
+
+    stages {
+        stage('Set environment') { ... }
+        stage('Resolve repos to garden') { ... }
+        stage('Trigger workers for each repo') { ... }
+    }
+}
+```
+
+Workers are parameterized and follow sequential stages. Each stage is deterministic and idempotent, which means re-running a failed build is always safe. Agent actions inside a stage are probabilistic: two runs on the same repo may produce different fixes.
+
+1. **Setup**: environment setup (Node.js, Claude CLI, gh CLI), repo checkout
+2. **Agent prompt injection**: copy `prompt.md` into the workspace
+3. **Pre-scan and static analysis**: run Semgrep, build the GNU Global index
+4. **Agent invocation**: run Claude headlessly against the repo with `--dangerously-skip-permissions` (no human approval of tool calls in CI), `--max-turns 120` (enough room to complete a full scan, fix, test, and PR cycle), routed through AWS Bedrock
+5. **Ensure PR creation**: fallback PR step if the agent pushed a branch but didn't open a PR
+
+```groovy
+pipeline {
+    stages {
+        stage('Setup')                    { ... } // Node.js, Claude CLI, gh CLI
+        stage('Inject prompt')            { ... } // cp AGENT_PROMPT.md → workspace
+        stage('Collect feedback')         { ... } // check prior PR outcomes
+        stage('Pre-scan')                 { ... } // Semgrep, gtags, CodeQL
+        stage('Agent reasoning loop')     { ... } // claude --dangerously-skip-permissions
+        stage('Ensure PR opened')         { ... } // fallback gh pr create
+    }
+}
+```
+
+### Pre-Agent Enrichment
+
+Before the agent reasons about the codebase, a few stages run to enrich its context and point it in the right direction.
+
+**Pre-scan and static analysis**: Jenkins step runs [Semgrep](https://github.com/semgrep/semgrep) and builds the [GNU Global call-graph index](https://www.gnu.org/software/global/manual/global.html) before the agent is invoked.
+
+The reason this matters: agent-invoked scanning is expensive. If the agent calls `semgrep --config=auto --json .` itself:
+
+- Agent emits a tool call: `Bash("semgrep --config=auto --json .")`
+- Semgrep runs and returns hundreds of KBs of JSON
+- Agent spends turns invoking, parsing, filtering, and interpreting the output
+
+Pre-scanning means findings are already on disk and read in a single turn. All reasoning goes toward what to do with the data, not producing it.
+
+Choosing which tools to run required evaluating what each one actually answers.
+Here were some of the considerations:
+
+| Tool | What it answers | Speed |
+|---|---|---|
+| **Semgrep** *(in use)* | "Is this DB call inside a loop?" AST-aware pattern matching | 30-120s |
+| ast-grep | Same as Semgrep, simpler rules | <5s |
+| ctags | "Where is this method defined?" symbol index | ~2s |
+| **GNU Global** *(in use)* | "What calls this method?" bidirectional cross-reference | ~5s |
+| dependency-cruiser / jdeps | "What does this module depend on?" import graph | ~10s |
+| CodeQL | "Does user input reach a SQL query across 4 hops?" full data flow | 5-30min |
+| Joern | Same as CodeQL, open source, self-hosted | 5-30min |
+| SonarQube | Bugs, smells, and security tracked over time | varies |
+
+Semgrep and GNU Global were the right picks: fast, no compile step, and they answer the questions agents actually need. CodeQL and Joern are more powerful but the compile requirement and 30-minute runtime make them impractical to run on every daily invocation.
+
+**Feedback collection** solves a subtler problem: agents had no memory of prior runs. Every day, the security agent might surface the same finding, even if reviewers had already closed several PRs on that exact pattern without merging them. Repeating rejected suggestions is the fastest way to erode trust in an automated system.
+
+Before each run, Gardener checks the outcome of every PR the agent previously opened and updates a persistent feedback record committed alongside the code. Rejected patterns enter an exponential backoff window so the agent stops resurfacing them. Merged patterns get a confidence boost when ranking future findings. By the time the agent starts reasoning, it already knows what has worked and what hasn't.
+
+### The Agent Reasoning Loop
+
+Every agent is defined by its `AGENT_PROMPT.md`.
+
+```bash
+claude --dangerously-skip-permissions \
+       --model us.anthropic.claude-sonnet-4-6 \
+       --max-turns 120 \
+       -p "$(cat AGENT_PROMPT.md)"
+```
+
+The agent then executes these steps:
+
+1. **Read `AGENT_CONTEXT.md`**: a context file placed in each target repo's root, describing the service's stack, testing framework, known risk areas, files to exclude, and more
+2. **Check existing open PRs**: build a skip list to avoid duplicates
+3. **Layered scanning**:
+   - *Layer 1*: reads pre-scan output files and feedback (from the enrichment)
+   - *Layer 2*: heuristic glob scan on high-risk filename patterns
+   - *Layer 3*: deep call-graph lookup
+4. **Rank and select**: rank findings on criticality
+5. **Implement fix**: apply change, batch identical mechanical fixes across files if applicable
+6. **Test**: run the repo's testing
+7. **Open PR**
+
+---
+
+## Current State
+
+Five agents run daily across a fleet of Java microservices, a JS service, and a Python service.
+1. security-remediation
+2. memory-optimizer
+3. api-latency-optimizer
+4. dead-code-remover
+5. thread-safety
+
+---
+
+## Reflections
+
+### Manual evaluation doesn't scale
+
+The hardest unsolved problem is assessing whether agent output is actually good. Is this PR addressing a real issue? Is the fix correct? Is it even the most critical issue to fix?
+
+And the deeper question: the agents currently surface problems that match known patterns. The truly dangerous bugs, the ones that span many files and call chains and emerge from how the system behaves rather than how any single function is written, are still invisible to them. Right now, assessing quality is manual, which caps how quickly the fleet can grow. The feedback loop helps at the margins.
+
+Better automated evaluation, before the PR is even opened, is the next meaningful improvement.
+
+### The agent composition question
+
+One pattern that worked well: one agent for implementation, a separate agent for review. The "agent roundtable" of five or more agents debating an approach sounds good in theory but in practice produces noise and consensus-seeking rather than sharp feedback. Two agents with clearly defined roles, one builds and one critiques, was the right unit here.
+
+### Am I getting dumber?
+
+I've caught myself asking an agent to delete a directory... `rmdir` takes two seconds to type.
+
+I've found that doing mundane tasks still forces critical thinking and understanding in some ways.
+
+Typing out `git add` and `git commit` still feels right. Asking an agent to scan a 50,000-line codebase for race conditions also feels right. Like everyone else, I'm still trying to figure out where the line is.

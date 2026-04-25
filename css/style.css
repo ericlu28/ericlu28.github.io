@@ -360,6 +360,9 @@ section + section {
   font-size: 0.82rem;
   color: var(--muted);
 }
+.post-meta-sep {
+  margin: 0 0.35rem;
+}
 
 .post-content {
   max-width: 680px;
