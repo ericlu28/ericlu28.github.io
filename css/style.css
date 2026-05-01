@@ -116,19 +116,25 @@ section + section {
 }
 
 .hero-photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 10px;
+  width: min(200px, 32vw);
+  max-width: 100%;
+  max-height: 45vmin;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  border-radius: 12px;
   object-fit: cover;
+  object-position: center top;
   background-color: var(--surface);
   border: 1px solid var(--border);
   display: block;
 }
 
 .hero-photo-placeholder {
-  width: 140px;
-  height: 140px;
-  border-radius: 10px;
+  width: min(200px, 32vw);
+  max-width: 100%;
+  max-height: 45vmin;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
   background-color: var(--surface);
   border: 1px dashed var(--border);
   display: flex;
@@ -168,47 +174,223 @@ section + section {
   text-decoration: none;
 }
 .social-links a:hover { color: var(--accent); text-decoration: none; }
-
-/* ===== Projects ===== */
-.project-grid {
-  display: grid;
-  gap: 1rem;
+.social-links a img.social-logo {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  object-fit: cover;
+  border-radius: 22%;
+}
+.social-links a:hover img.social-logo {
+  opacity: 0.85;
 }
 
-.project-card {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.25rem 1.4rem;
-  transition: border-color 0.15s;
-}
-.project-card:hover { border-color: var(--accent); }
-
-.project-card h3 {
+/* ===== Home: About, family, hobbies ===== */
+.home-about {
+  max-width: 620px;
   font-size: 0.95rem;
+}
+.home-about p + p {
+  margin-top: 1rem;
+}
+
+.life-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.life-item {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  align-items: center;
+}
+
+.life-item .life-photo {
+  width: 100%;
+  max-height: 280px;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  display: block;
+}
+
+.life-item figcaption {
+  padding: 0 0.15rem;
+}
+.life-item figcaption h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
   font-weight: 600;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
+  color: var(--text);
 }
-.project-card p {
-  font-size: 0.875rem;
+.life-item figcaption p {
+  font-size: 0.9rem;
   color: var(--muted);
-  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  margin: 0;
 }
-.tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 500;
-  padding: 0.2em 0.6em;
-  border-radius: 4px;
+
+@media (min-width: 640px) {
+  .life-item {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+  .life-item:nth-child(even) .life-photo {
+    order: 2;
+  }
+  .life-item:nth-child(even) figcaption {
+    order: 1;
+  }
+}
+
+/* ===== Home: Ins and outs (editorial) ===== */
+.insouts-heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.insouts-heading-row .section-title {
+  margin-bottom: 0;
+}
+
+.insouts-heading-sep {
+  color: var(--muted);
+  font-size: inherit;
+}
+
+.insouts-year-select {
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
   background-color: var(--bg);
   border: 1px solid var(--border);
-  color: var(--muted);
-  margin-right: 0.35rem;
-  margin-bottom: 0.35rem;
+  border-radius: 8px;
+  padding: 0.28rem 1.75rem 0.28rem 0.6rem;
+  cursor: pointer;
+  line-height: 1.2;
+  min-height: 2.1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%236b6660' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.45rem center;
 }
-.project-link {
-  font-size: 0.82rem;
-  font-weight: 500;
+
+.insouts-year-select:hover {
+  border-color: var(--accent);
+}
+
+.insouts-year-select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.insouts-empty-year {
+  text-align: center;
+  padding: 0.5rem 0.25rem;
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.insouts-empty-year strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.insouts-card {
+  margin-top: 0;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: clamp(1.35rem, 4.5vw, 2rem) clamp(1.25rem, 4vw, 2.25rem);
+  box-shadow: 0 12px 36px rgba(28, 28, 26, 0.05);
+}
+
+.insouts-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.insouts-heading {
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.insouts-col--in .insouts-heading {
+  color: var(--accent);
+}
+
+.insouts-col--out .insouts-heading {
+  color: #695550;
+}
+
+.insouts-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.insouts-list li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.2rem;
+}
+
+.insouts-list li:last-child {
+  margin-bottom: 0;
+}
+
+.insouts-col--in .insouts-list ::marker {
+  color: var(--accent);
+}
+
+.insouts-col--out .insouts-list ::marker {
+  color: #9a837e;
+}
+
+@media (min-width: 560px) {
+  .insouts-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2.5rem;
+    align-items: start;
+    position: relative;
+  }
+  .insouts-grid::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-left: 1px solid var(--border);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 559px) {
+  .insouts-col--in {
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
 }
 
 /* ===== Resume Page ===== */
@@ -528,7 +710,12 @@ section + section {
   .site-nav ul { gap: 1rem; }
 
   .hero-photo,
-  .hero-photo-placeholder { width: 100px; height: 100px; }
+  .hero-photo-placeholder {
+    width: min(160px, 44vw);
+    max-height: 50vmin;
+    aspect-ratio: 3 / 4;
+    height: auto;
+  }
 
   .resume-entry { grid-template-columns: 1fr; }
   .resume-entry-date { text-align: left; }

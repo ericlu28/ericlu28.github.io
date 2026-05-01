@@ -11,7 +11,7 @@ title: ""
       <!-- Photo -->
       <div style="flex-shrink:0;">
         <img
-          src="img/profile.jpg"
+          src="img/profile.jpeg"
           alt="Eric Lu"
           class="hero-photo"
           onerror="this.outerHTML='<div class=\'hero-photo-placeholder\'><span>photo</span></div>'"
@@ -33,8 +33,11 @@ title: ""
           <a href="https://github.com/ericlu28" target="_blank" rel="noopener" title="GitHub">
             <i class="bi bi-github"></i>
           </a>
-          <a href="mailto:ealu@berkeley.edu" title="Email">
+          <a href="mailto:eric.andrew.lu@gmail.com" title="Email">
             <i class="bi bi-envelope"></i>
+          </a>
+          <a href="https://beliapp.co/app/elueats" target="_blank" rel="noopener" title="Beli">
+            <img class="social-logo" src="img/beli-app-icon.jpg" alt="Beli" width="100" height="100" decoding="async" />
           </a>
         </div>
       </div>
@@ -42,54 +45,195 @@ title: ""
   </section>
 
   <!-- About -->
-  <section>
-    <h2 class="section-title">About</h2>
-    <p style="max-width:620px; font-size:0.95rem;">
-      CS &amp; Data Science grad from UC Berkeley. I care about building clean, reliable software and understanding the systems underneath.
-      At Adobe I work on &hellip; <!-- TODO: fill in your team/focus -->
-      Outside of work I golf, surf, and play poker.
-    </p>
+  <section id="about" aria-labelledby="about-heading">
+    <h2 class="section-title" id="about-heading">About</h2>
+    <div class="home-about">
+      <p>
+        I&apos;m a software engineer focused on dependable systems and thoughtful product detail. I like code that stays readable years later,
+        teams that disagree constructively, and problems where the hardest part is understanding what &ldquo;right&rdquo; even means before you optimize.
+      </p>
+      <p>
+        I studied computer science and data science at UC Berkeley and now build software at Adobe in San Francisco. For work history and tooling, see the Resume page.
+      </p>
+    </div>
   </section>
 
-  <!-- Projects -->
-  <section>
-    <h2 class="section-title">Projects</h2>
-    <div class="project-grid">
+  <!-- My family -->
+  <section id="my-family" aria-labelledby="family-heading">
+    <h2 class="section-title" id="family-heading">My family</h2>
+    <div class="life-grid">
+      <figure class="life-item">
+        <img
+          class="life-photo"
+          src="img/life/family.jpeg"
+          alt="Eric&apos;s family"
+          width="880"
+          height="660"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <h3>Home base</h3>
+          <p>
+            Roots in Southern California—my parents still live near where I grew up, and siblings are sprinkled up and down the West Coast.
+            They&apos;re the reason weekends home feel short and why every trip south usually ends around a dining table louder than any conference room I&apos;ll ever sit in.
+          </p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
 
-      <div class="project-card">
-        <h3>CS 61A</h3>
-        <p>Structure and Interpretation of Computer Programs — coursework and projects.</p>
-        <span class="tag">Python</span>
-        <span class="tag">Scheme</span>
-        <br/>
-        <a class="project-link" href="https://github.com/ericlu28/cs61a" target="_blank" rel="noopener">
-          <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
-        </a>
-      </div>
+  <!-- My life -->
+  <section id="my-life" aria-labelledby="life-heading">
+    <h2 class="section-title" id="life-heading">My life</h2>
+    <div class="life-grid">
 
-      <div class="project-card">
-        <h3>CS 61B — Data Structures</h3>
-        <p>Implementations of core data structures and algorithms: trees, graphs, hashing, sorting.</p>
-        <span class="tag">Java</span>
-        <br/>
-        <a class="project-link" href="https://github.com/ericlu28/cs61b" target="_blank" rel="noopener">
-          <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
-        </a>
-      </div>
+      <figure class="life-item">
+        <img
+          class="life-photo"
+          src="img/life/golf.jpeg"
+          alt="Eric on the golf course"
+          width="880"
+          height="660"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <h3>Golf</h3>
+          <p>
+            Weekend rounds whenever the fog lifts. Chasing greens in regulation and the occasional eagle putt—I play for sunshine, pace of play,
+            and the walk between shots.
+          </p>
+        </figcaption>
+      </figure>
 
-      <div class="project-card">
-        <h3>Data 8 — Principles &amp; Techniques of Data Science</h3>
-        <p>Statistical inference, A/B testing, regression, and classification in Python.</p>
-        <span class="tag">Python</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Pandas</span>
-        <br/>
-        <a class="project-link" href="https://github.com/ericlu28/data8" target="_blank" rel="noopener">
-          <i class="bi bi-github" style="margin-right:0.3em;"></i>GitHub
-        </a>
-      </div>
+      <figure class="life-item">
+        <img
+          class="life-photo"
+          src="img/life/travel.jpeg"
+          alt="Travel scenery from a trip"
+          width="880"
+          height="660"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <h3>Travel</h3>
+          <p>
+            New passport stamps when I can get them—city days for food and museums, and longer trips built around friends, family,
+            or a stretch of coastline I haven&apos;t seen yet.
+          </p>
+        </figcaption>
+      </figure>
+
+      <figure class="life-item">
+        <img
+          class="life-photo"
+          src="img/life/beach-surf.jpeg"
+          alt="Beach waves and coastline"
+          width="880"
+          height="660"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <h3>Sunshine, beach &amp; surfing</h3>
+          <p>
+            Raised near the ocean—still happiest where the horizon is mostly water. Sunny mornings, salty hair, sandy parking lots,
+            and paddling out whenever the swell cooperates (and sometimes when it doesn&apos;t).
+          </p>
+        </figcaption>
+      </figure>
 
     </div>
+  </section>
+
+  <!-- Matching <option value="…"> ↔ data-year="…". With JS, picker + panels stay aligned; orphaned options fall back to the first pairing that exists. -->
+  <section id="ins-outs" aria-labelledby="ins-outs-heading">
+    <div class="insouts-heading-row">
+      <h2 class="section-title" id="ins-outs-heading">Ins and outs</h2>
+      <span class="insouts-heading-sep" aria-hidden="true">&middot;</span>
+      <select class="insouts-year-select" autocomplete="off" aria-label="Ins and outs year">
+        <option value="2026" selected>2026</option>
+        <option value="2025">2025</option>
+      </select>
+    </div>
+
+    <div id="insouts-panels">
+      <div class="insouts-card" role="region" aria-label="Selected year ins and outs" aria-live="polite">
+
+        <div class="insouts-year-panel" data-year="2026">
+          <div class="insouts-grid">
+            <div class="insouts-col insouts-col--in">
+              <h3 class="insouts-heading">Ins</h3>
+              <ul class="insouts-list">
+                <li>Texting your friends back immediately</li>
+                <li>Cooking steaks / homecooked meals</li>
+                <li>Hungover facetimes</li>
+                <li>International war (didn&apos;t decide this one)</li>
+              </ul>
+            </div>
+            <div class="insouts-col insouts-col--out">
+              <h3 class="insouts-heading">Outs</h3>
+              <ul class="insouts-list">
+                <li>Seed oils</li>
+                <li>Google Maps</li>
+                <li>Watching sports on TV</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="insouts-year-panel" data-year="2025" hidden>
+          <p class="insouts-empty-year">
+            Archive for <strong>2025</strong>—duplicate the markup from the previous year here when you rotate lists, or add a draft ahead of time.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var root = document.getElementById('ins-outs');
+        if (!root) return;
+        var select = root.querySelector('.insouts-year-select');
+        var panels = root.querySelectorAll('.insouts-year-panel');
+        if (!select || !panels.length) return;
+
+        function panelFor(year) {
+          return Array.prototype.find.call(panels, function (panel) {
+            return panel.getAttribute('data-year') === year;
+          });
+        }
+
+        function firstBackedYear() {
+          for (var i = 0; i < select.options.length; i++) {
+            var v = select.options[i].value;
+            if (v && panelFor(v)) return v;
+          }
+          return panels[0].getAttribute('data-year');
+        }
+
+        function showYear(year) {
+          panels.forEach(function (panel) {
+            var match = panel.getAttribute('data-year') === year;
+            panel.hidden = !match;
+            panel.setAttribute('aria-hidden', match ? 'false' : 'true');
+          });
+        }
+
+        function sync() {
+          var y = select.value && panelFor(select.value) ? select.value : firstBackedYear();
+          if (typeof y !== 'string') return;
+          if (select.value !== y) select.value = y;
+          showYear(y);
+        }
+
+        sync();
+        select.addEventListener('change', sync);
+      })();
+    </script>
   </section>
 
 </main>
