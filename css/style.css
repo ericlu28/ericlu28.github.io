@@ -296,20 +296,6 @@ section + section {
   outline-offset: 2px;
 }
 
-.insouts-empty-year {
-  text-align: center;
-  padding: 0.5rem 0.25rem;
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--muted);
-}
-
-.insouts-empty-year strong {
-  font-weight: 600;
-  color: var(--text);
-}
-
 .insouts-card {
   margin-top: 0;
   background-color: var(--surface);
