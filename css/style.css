@@ -115,6 +115,14 @@ section + section {
   padding: 3.5rem 0 2.5rem;
 }
 
+.hero-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .hero-photo {
   width: min(200px, 32vw);
   max-width: 100%;
@@ -186,8 +194,12 @@ section + section {
 }
 
 /* ===== Home: About, family, hobbies ===== */
+#about .section-title {
+  text-align: center;
+}
 .home-about {
   max-width: 620px;
+  margin-inline: auto;
   font-size: 0.95rem;
 }
 .home-about p + p {
