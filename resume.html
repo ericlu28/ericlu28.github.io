@@ -30,24 +30,76 @@ title: Resume
             <span class="skill-tag">Java</span>
             <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">SQL</span>
+            <span class="skill-tag">GoLang</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">ReactJS</span>
+            <span class="skill-tag">HTML5/CSS</span>
           </div>
         </div>
 
         <div class="resume-skill-group">
-          <div class="resume-skill-label">Libraries &amp; Frameworks</div>
+          <div class="resume-skill-label">Frameworks &amp; Libraries</div>
           <div class="skills-grid">
+            <span class="skill-tag">Springboot</span>
+            <span class="skill-tag">Kafka</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">PySpark</span>
+            <span class="skill-tag">TensorFlow</span>
             <span class="skill-tag">NumPy</span>
             <span class="skill-tag">Pandas</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">Google ADK</span>
+            <span class="skill-tag">Ollama</span>
+            <span class="skill-tag">MCP</span>
           </div>
         </div>
 
         <div class="resume-skill-group">
-          <div class="resume-skill-label">Tools</div>
+          <div class="resume-skill-label">AI / ML</div>
+          <div class="skills-grid">
+            <span class="skill-tag">XGBoost</span>
+            <span class="skill-tag">Neural Nets</span>
+            <span class="skill-tag">k-means</span>
+            <span class="skill-tag">PCA</span>
+            <span class="skill-tag">Logistic Regression</span>
+            <span class="skill-tag">Reinforcement Learning</span>
+            <span class="skill-tag">LLM Agents</span>
+            <span class="skill-tag">Claude</span>
+          </div>
+        </div>
+
+        <div class="resume-skill-group">
+          <div class="resume-skill-label">Tools &amp; DevOps</div>
           <div class="skills-grid">
             <span class="skill-tag">Git</span>
-            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Jenkins</span>
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">Argo CI/CD</span>
+            <span class="skill-tag">Databricks</span>
+            <span class="skill-tag">Jira</span>
+            <span class="skill-tag">Jupyter</span>
+            <span class="skill-tag">Hadoop</span>
+          </div>
+        </div>
+
+        <div class="resume-skill-group">
+          <div class="resume-skill-label">Cloud &amp; Infrastructure</div>
+          <div class="skills-grid">
+            <span class="skill-tag">AWS Lambda</span>
+            <span class="skill-tag">DynamoDB</span>
+            <span class="skill-tag">S3</span>
+            <span class="skill-tag">SQS</span>
+            <span class="skill-tag">GCP</span>
+            <span class="skill-tag">BigQuery</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">Splunk</span>
+            <span class="skill-tag">NewRelic</span>
+            <span class="skill-tag">Grafana</span>
+            <span class="skill-tag">Prometheus</span>
+            <span class="skill-tag">CDN</span>
           </div>
         </div>
       </section>
@@ -56,16 +108,17 @@ title: Resume
         <h2 class="section-title">Education</h2>
 
         <div class="resume-entry-sidebar">
-          <div class="resume-entry-title">B.S. Computer Science &amp; Data Science</div>
+          <div class="resume-entry-title">B.A. Computer Science &amp; B.A. Data Science</div>
           <div class="resume-entry-sub">UC Berkeley &mdash; Berkeley, CA</div>
           <div class="resume-entry-date" style="text-align:left; margin-top:0.25rem;">2020 &ndash; 2024</div>
-          <p class="resume-entry-detail">Relevant coursework: Data Structures, Algorithms, Data Science, Discrete Math &amp; Probability, Computer Architecture, Decentralized Intelligence</p>
+          <div class="resume-entry-sub" style="margin-top:0.2rem;">GPA: 3.72 &middot; Concentration in Business/Industrial Analytics</div>
+          <p class="resume-entry-detail">Database Systems, Algorithms Analysis, Operating Systems, Machine Learning, Artificial Intelligence, Natural Language Processing, Data Structures, Data Science Principles, Computer Security, Discrete Math</p>
         </div>
       </section>
 
     </aside>
 
-    <!-- Main: Experience -->
+    <!-- Main: Experience + Projects -->
     <div class="resume-main">
 
       <section>
@@ -73,16 +126,96 @@ title: Resume
 
         <div class="resume-entry">
           <div>
-            <div class="resume-entry-title">Software Engineer</div>
-            <div class="resume-entry-sub">Adobe &mdash; San Francisco, CA</div>
+            <div class="resume-entry-title">Software Engineer &mdash; Adobe Risk Platform</div>
+            <div class="resume-entry-sub">Adobe &mdash; San Jose, CA</div>
           </div>
-          <div class="resume-entry-date">2024 &ndash; Present</div>
+          <div class="resume-entry-date">Dec 2025 &ndash; Present</div>
           <ul>
-            <li><!-- TODO: add bullet --></li>
+            <li>Revamped front-end SDK (ARP.js) for Adobe&rsquo;s Risk Platform, achieving 99.6%+ BFP token availability for Stock Download and 94%+ for UC Payments (up from 5%) via CDN caching, CORS fixes, and token refactors; contributed to $26M ARR impact</li>
+            <li>Automated email domain classification pipeline (Python, Spark, SQL), expanding fraud detection coverage from 3M &rarr; 4M domains with 1,900+ new fraudulent domains tagged; $6M ARR impact</li>
+            <li>Built observability stack with Splunk, NewRelic, Grafana, and Prometheus; implemented canary rollouts, auto-rollback, and automated Slack alerting for proactive incident detection across the platform</li>
+            <li>Drove 15&ndash;20% reduction in network/DB overhead via parallel cache lookups and refactored microservice calls to external fraud vendors</li>
+            <li>Developed AI-powered Splunk Analyzer bot (Python) compatible with GitHub and internal Gitcorp; authored skills into commerce-skills and Watson platform, enabling team-level AI-assisted engineering workflows</li>
+            <li>Leading ARP.js &rarr; Watson migration to multi-tenant service architecture; delivered 71 PRs and reviewed 83 PRs across 16+ repositories in Q1 2026</li>
           </ul>
         </div>
 
-        <!-- Add more roles below as needed -->
+        <div class="resume-entry">
+          <div>
+            <div class="resume-entry-title">Software Engineer &mdash; Payments &amp; Order Processing</div>
+            <div class="resume-entry-sub">Adobe &mdash; San Jose, CA</div>
+          </div>
+          <div class="resume-entry-date">Aug 2024 &ndash; Nov 2025</div>
+          <ul>
+            <li>Designed and delivered automated Pause/Resume contract scheduling and state changes (DayPass, Undo-Cancel) for Silverback B2C platform; increased throughput 5x (roqCount 20&rarr;100), resolved 3M+ event backlog in 3 days; $15&ndash;20M ARR (Pause+Resume), $6M ARR (DayPass App Store)</li>
+            <li>Led Free Offer AOCS onboarding end-to-end (100% design &amp; dev) including eligibility workflows, VIPMP support, retry logic, and cross-service compatibility across 15+ repositories; $5M ARR</li>
+            <li>Sole technical lead for B2B Flex Promotions (CME-13126), delivering feature flags, schema changes, and cross-channel email/contract flows for tiered enterprise promotions; $5M ARR</li>
+            <li>Developed fraud vendor integrations (Arkose, FPJS, BFP); parallel cache lookups reduced latency, skipping redundant PRS calls saved 432K requests/week, and resiliency improvements added 141 daily payment retries</li>
+            <li>Created Commerce AI agent enabling product discovery, upsell, and E2E checkout with PayPal MCP integration; 1st place org-wide hackathon winner. Python, Google ADK, Ollama, MCP</li>
+            <li>Led Commerce MCP project integrating log analyzer agents with Commerce enrichment for production support and CSO prevention</li>
+            <li>Migrated Payments&rsquo; services to Argo CI/CD and transitioned monitoring to Prometheus + Grafana, maintaining 4 9&rsquo;s reliability across the microservice ecosystem</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <div>
+            <div class="resume-entry-title">Software Engineer Intern &mdash; Payments</div>
+            <div class="resume-entry-sub">Adobe &mdash; San Jose, CA</div>
+          </div>
+          <div class="resume-entry-date">May &ndash; Aug 2023</div>
+          <ul>
+            <li>Designed and tested multiple ML classification models (Neural Nets, XGBoost) using Spark, TensorFlow, and Elephas to drive retry cost reduction and reduce model latency by 50% via distributed PySpark RDDs</li>
+            <li>Built end-to-end data mining processes on payment data to optimize retry schedule with 42 actionable recommendations</li>
+            <li>Onboarded and documented team migration of big data querying processes from Hadoop to Apache Databricks</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <div>
+            <div class="resume-entry-title">Project Lead &mdash; Emerging Technologies</div>
+            <div class="resume-entry-sub">Starbucks &mdash; San Francisco, CA</div>
+          </div>
+          <div class="resume-entry-date">Sep &ndash; Dec 2022</div>
+        </div>
+
+        <div class="resume-entry">
+          <div>
+            <div class="resume-entry-title">Data Engineer Intern</div>
+            <div class="resume-entry-sub">U.S. Venture (Breakthrough) &mdash; Green Bay, WI</div>
+          </div>
+          <div class="resume-entry-date">May &ndash; Aug 2022</div>
+          <ul>
+            <li>Deployed an end-to-end geospatial index for the pricing methodology team by integrating a common routing REST API, enabling internal query operations to a NoSQL (GeoJSON) database built on an R-Tree data structure</li>
+            <li>Implemented ETL pipeline processes in Python on Google Cloud Platform, reducing pricing latency by 40%</li>
+            <li>Contributed to backend development in agile methodology, improving architecture of SaaS product FELIX</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <div>
+            <div class="resume-entry-title">Data Science Contractor</div>
+            <div class="resume-entry-sub">Roku &mdash; Berkeley, CA</div>
+          </div>
+          <div class="resume-entry-date">Jan &ndash; May 2022</div>
+          <ul>
+            <li>Developed ML techniques (k-means, decision tree, PCA, logistic regression) to perform unsupervised customer segmentation analysis on 1M+ Roku Remote Voice users over an eight-week timespan</li>
+            <li>Built consumer profiles of distinct Roku Voice user groups, significantly increasing Roku Voice product penetration</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <div>
+            <div class="resume-entry-title">Privacy &amp; Cybersecurity Consultant</div>
+            <div class="resume-entry-sub">Airbnb &mdash; Berkeley, CA</div>
+          </div>
+          <div class="resume-entry-date">Sep &ndash; Dec 2021</div>
+          <ul>
+            <li>Pinpointed data privacy features to grow product penetration of Airbnb&rsquo;s digital nomad demographic by 36%</li>
+            <li>Conducted competitor UI/UX research to heighten perception of user data management rights and portability</li>
+            <li>Scraped and analyzed web forums for Airbnb pain points guiding customers through the data privacy lifecycle</li>
+          </ul>
+        </div>
+
       </section>
 
       <section>
@@ -90,38 +223,40 @@ title: Resume
 
         <div class="resume-entry">
           <div>
-            <div class="resume-entry-title">Project Name</div>
-            <div class="resume-entry-sub"><!-- tech stack --></div>
+            <div class="resume-entry-title"><a href="/blog/2026/04/24/gardener/">Gardener</a></div>
+            <div class="resume-entry-sub">Python, Jenkins, Claude, GitHub Actions</div>
           </div>
-          <div class="resume-entry-date"><!-- year --></div>
+          <div class="resume-entry-date">Apr 2026</div>
           <ul>
-            <li><!-- TODO: add bullet --></li>
+            <li>Built a scheduled autonomous agent system that continuously scans registered repos, identifies one issue per run, and opens a pull request with no human intervention&mdash;shipping fixes while the team is off the clock</li>
+            <li>Architected three-phase pipeline (orchestration, deterministic enrichment, agent reasoning loop) running on Jenkins cron jobs to keep execution fully in-house and auditable; won org-wide AI hack week</li>
           </ul>
         </div>
 
         <div class="resume-entry">
           <div>
-            <div class="resume-entry-title">Project Name</div>
-            <div class="resume-entry-sub"><!-- tech stack --></div>
+            <div class="resume-entry-title">LinkedUp</div>
+            <div class="resume-entry-sub">JavaScript, ReactJS, HTML/CSS, Firebase, Node.js</div>
           </div>
-          <div class="resume-entry-date"><!-- year --></div>
+          <div class="resume-entry-date">Jul 2022 &ndash; Present</div>
           <ul>
-            <li><!-- TODO: add bullet --></li>
+            <li>Built a full-stack website to expedite the job referral process with a ReactJS frontend and Node.js backend, using Jira for agile development and sprint planning across deploys</li>
+            <li>Designed an end-to-end system utilizing Firebase Realtime Database for user authentication and persistent data</li>
           </ul>
         </div>
 
         <div class="resume-entry">
           <div>
-            <div class="resume-entry-title">Project Name</div>
-            <div class="resume-entry-sub"><!-- tech stack --></div>
+            <div class="resume-entry-title">Aleo AI Poker Bot</div>
+            <div class="resume-entry-sub">Python</div>
           </div>
-          <div class="resume-entry-date"><!-- year --></div>
+          <div class="resume-entry-date">Sep &ndash; Dec 2021</div>
           <ul>
-            <li><!-- TODO: add bullet --></li>
+            <li>Built an automated poker bot using game theory optimal strategy and reinforcement learning (CFR)</li>
+            <li>Reduced memory usage and runtime significantly by caching previous game states in array containers for future decisions</li>
           </ul>
         </div>
 
-        <!-- Add more projects below as needed -->
       </section>
 
     </div>
