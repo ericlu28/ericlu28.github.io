@@ -455,6 +455,19 @@ section + section {
 }
 .resume-entry ul li { margin-bottom: 0.3rem; }
 
+.resume-entry-tools {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+.resume-entry-tools .skill-tag {
+  font-size: 0.75rem;
+  padding: 0.2em 0.6em;
+  color: var(--muted);
+}
+
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
