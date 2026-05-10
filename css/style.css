@@ -481,14 +481,29 @@ section + section {
   border: 1px solid var(--border);
   color: var(--text);
 }
+.skill-tag strong {
+  font-weight: 600;
+  color: var(--text);
+}
+.skill-tag strong::after {
+  content: "|";
+  font-weight: 400;
+  color: var(--border);
+  margin: 0 0.35em;
+}
+.skill-tag .skill-tag-subs {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
 
 /* Resume two-column layout */
 .resume-layout {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 300px 1fr;
   align-items: start;
   padding-bottom: 3rem;
   border-top: 1px solid var(--border);
+  margin-left: -4rem;
 }
 
 .resume-sidebar {
@@ -749,7 +764,7 @@ section + section {
   .resume-entry { grid-template-columns: 1fr; }
   .resume-entry-date { text-align: left; }
 
-  .resume-layout { grid-template-columns: 1fr; }
+  .resume-layout { grid-template-columns: 1fr; margin-left: 0; }
   .resume-sidebar {
     padding-right: 0;
     border-right: none;
