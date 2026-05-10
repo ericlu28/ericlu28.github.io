@@ -22,7 +22,7 @@ title: Resume
       <section>
         <h2 class="section-title">Skills</h2>
 
-        <div class="resume-skill-group">
+        <div class="resume-skill-group reveal">
           <div class="resume-skill-label">Languages</div>
           <div class="skills-grid">
             <span class="skill-tag">Python</span>
@@ -34,7 +34,7 @@ title: Resume
           </div>
         </div>
 
-        <div class="resume-skill-group">
+        <div class="resume-skill-group reveal">
           <div class="resume-skill-label">Frameworks &amp; Libraries</div>
           <div class="skills-grid">
             <span class="skill-tag">Spring Boot</span>
@@ -47,7 +47,7 @@ title: Resume
           </div>
         </div>
 
-        <div class="resume-skill-group">
+        <div class="resume-skill-group reveal">
           <div class="resume-skill-label">Cloud, DevOps, Observability &amp; Infra</div>
           <div class="skills-grid">
             <span class="skill-tag"><strong>AWS</strong><span class="skill-tag-subs">Lambda · S3 · DynamoDB · SQS · CloudFront</span></span>
@@ -64,7 +64,7 @@ title: Resume
       <section>
         <h2 class="section-title">Education</h2>
 
-        <div class="resume-entry-sidebar">
+        <div class="resume-entry-sidebar reveal">
           <div class="resume-entry-title"><strong>U.C. Berkeley</strong></div>
           <div class="resume-entry-sub" style="color: var(--text); font-weight: 500;">Computer Science &amp; Data Science</div>
           <div class="resume-entry-sub">Concentration: Business Analytics</div>
@@ -81,7 +81,7 @@ title: Resume
       <section>
         <h2 class="section-title">Experience</h2>
 
-        <div class="resume-entry">
+        <div class="resume-entry reveal">
           <div>
             <div class="resume-entry-title">Software Engineer @ Adobe</div>
             <div class="resume-entry-sub">Adobe Risk Platform</div>
@@ -106,7 +106,7 @@ title: Resume
           </div>
         </div>
 
-        <div class="resume-entry">
+        <div class="resume-entry reveal">
           <div>
             <div class="resume-entry-title">Software Engineer @ Adobe</div>
             <div class="resume-entry-sub">Payments &amp; Order Processing</div>
@@ -140,7 +140,7 @@ title: Resume
           </div>
         </div>
 
-        <div class="resume-entry">
+        <div class="resume-entry reveal">
           <div>
             <div class="resume-entry-title">Software Engineer Intern @ Adobe</div>
             <div class="resume-entry-sub">Payments</div>
@@ -163,7 +163,7 @@ title: Resume
           </div>
         </div>
 
-        <div class="resume-entry">
+        <div class="resume-entry reveal">
           <div>
             <div class="resume-entry-title">Project Lead @ Starbucks</div>
             <div class="resume-entry-sub">Emerging Technologies</div>
@@ -172,7 +172,7 @@ title: Resume
           <div class="resume-entry-date">Sep &ndash; Dec 2022</div>
         </div>
 
-        <div class="resume-entry">
+        <div class="resume-entry reveal">
           <div>
             <div class="resume-entry-title">Data Engineer Intern @ U.S. Venture</div>
             <div class="resume-entry-sub">Breakthrough</div>
@@ -193,7 +193,7 @@ title: Resume
           </div>
         </div>
 
-        <div class="resume-entry">
+        <div class="resume-entry reveal">
           <div>
             <div class="resume-entry-title">Data Science Contractor @ Roku</div>
             <div class="resume-entry-sub">Berkeley, CA</div>
@@ -212,7 +212,7 @@ title: Resume
           </div>
         </div>
 
-        <div class="resume-entry">
+        <div class="resume-entry reveal">
           <div>
             <div class="resume-entry-title">Privacy &amp; Cybersecurity Consultant @ Airbnb</div>
             <div class="resume-entry-sub">Berkeley, CA</div>
@@ -234,5 +234,26 @@ title: Resume
     </div>
 
   </div>
+
+  <script>
+    (function () {
+      var items = document.querySelectorAll('.reveal');
+      if (!items.length) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, i) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var delay = el.dataset.delay || 0;
+            setTimeout(function () { el.classList.add('visible'); }, delay);
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(function (el, i) {
+        el.dataset.delay = i * 30;
+        observer.observe(el);
+      });
+    })();
+  </script>
 
 </main>

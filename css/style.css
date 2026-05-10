@@ -776,3 +776,14 @@ section + section {
 
   .site-footer .inner { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
+
+/* ===== Scroll reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
