@@ -431,12 +431,28 @@ section + section {
 }
 .resume-entry:last-child { margin-bottom: 0; }
 
+.resume-entry-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  background: #fff;
+  flex-shrink: 0;
+  margin-right: 0.6rem;
+  margin-top: 1px;
+}
+.resume-entry-header {
+  display: flex;
+  align-items: flex-start;
+}
+
 .resume-entry-title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
 }
 .resume-entry-sub {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--muted);
 }
 .resume-entry-date {
@@ -455,6 +471,7 @@ section + section {
   grid-column: 1 / -1;
 }
 .resume-entry ul li { margin-bottom: 0.3rem; }
+.resume-entry a { text-decoration: underline; }
 
 .resume-entry-tools {
   grid-column: 1 / -1;
