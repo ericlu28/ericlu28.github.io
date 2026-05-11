@@ -94,11 +94,11 @@ title: Resume
           </div>
           <div class="resume-entry-date">Nov 2025 &ndash; Present</div>
           <ul>
-            <li>Revamped front-end SDK for Adobe&rsquo;s Risk Platform; enabled collection of user and browser signals, bot detection, and fraud vendor integrations across 100M+ *.adobe.com sessions daily</li>
-            <li>Automated fraudulent email domain classification pipeline, expanding fraud detection coverage across 4M+ domains, $XXM ARR impact</li>
-            <li>Built <a href="/blog/2026/04/24/gardener/" target="_blank" rel="noopener">Gardener</a>: scheduled agents for continuous codebase health improvements. Fixed security vulnerabilities, memory leaks, thread safety issues across many codebases in Adobe ecosystem.</li>
-            <li>Built observability stack (Splunk, Grafana, Prometheus) and deployment pipeline with Argo Workflows; implemented canary rollouts, auto-rollback, and automated Slack alerting for proactive incident detection across the platform</li>
-            <li>Developed AI-powered Splunk Analyzer bot (Python) compatible with GitHub and internal Gitcorp; authored skills into commerce-skills and Watson platform, enabling team-level AI-assisted engineering workflows</li>
+            <li>Revamped <b>front-end SDK</b> for Adobe&rsquo;s Risk Platform; enabled collection of user and browser signals, bot detection, IP intellience, and fraud vendor integrations across <b>100M+ *.adobe.com sessions weekly</b></li>
+            <li>Automated <b>fraudulent email domain classification pipeline</b>, expanding fraud detection coverage across 4M+ domains, $XXM ARR impact</li>
+            <li>Built <a href="/blog/2026/04/24/gardener/" target="_blank" rel="noopener">Gardener</a>: <b>scheduled agents for continuous codebase health improvements</b>. Fixed security vulnerabilities, memory leaks, thread safety issues across many codebases in Adobe ecosystem.</li>
+            <li>Built <b>observability stack</b> (Splunk, Grafana, Prometheus) and <b>deployment pipeline</b> with Argo Workflows; implemented canary rollouts, auto-rollback, anomaly detection for proactive incident detection.</li>
+            <li>Developed back-end fraud vendor integrations and risk decisioning: design decisions for parallelism, resiliency, caching, etc. Directly resulted in <b>400+% fraudulent payment reduction</b>, $XXM ARR impact</li>
           </ul>
         </div>
 
@@ -115,30 +115,13 @@ title: Resume
           </div>
           <div class="resume-entry-date">Aug 2024 &ndash; Nov 2025</div>
           <ul>
-            <li>Designed and delivered automated Pause/Resume contract scheduling and state changes (DayPass, Undo-Cancel) for Silverback B2C platform; increased throughput 5x, resolved 3M+ event backlog in 3 days; $15&ndash;20M ARR (Pause+Resume), $6M ARR (DayPass App Store)</li>
-            <li>Led Free Offer AOCS onboarding end-to-end (100% design &amp; dev) including eligibility workflows, VIPMP support, retry logic, and cross-service compatibility across 15+ repositories; $5M ARR</li>
-            <li>Sole technical lead for B2B Flex Promotions, delivering feature flags, schema changes, and cross-channel email/contract flows for tiered enterprise promotions; $5M ARR</li>
-            <li>Developed fraud vendor integrations (Arkose, FPJS, BFP); parallel cache lookups reduced latency, skipping redundant PRS calls saved 432K requests/week, and resiliency improvements added 141 daily payment retries</li>
-            <li>Created Commerce AI agent enabling product discovery, upsell, and E2E checkout with PayPal MCP integration; 1st place org-wide hackathon winner</li>
-            <li>Led Commerce MCP project integrating log analyzer agents with Commerce enrichment for production support and CSO prevention</li>
-            <li>Migrated Payments&rsquo; services to Argo CI/CD and transitioned monitoring to Prometheus + Grafana, maintaining 4 9&rsquo;s reliability across the microservice ecosystem</li>
+            <li>Designed and built eCommerce platform features: <b>Pause/Resume</b> contract scheduling ($XXM ARR), daily/weekly/monthly <b>App Store subscriptions</b> ($XXM ARR), <b>undo cancellation</b> ($XXM ARR), <b>free offer bundling</b> ($XM ARR). <br>
+              Features spanned Adobe's Java microservices and event-driven systems (Kafka, SQS), balancing resilience and scalability for millions of daily transactions.</li>
+            <li>Built <b>1st-place hackthon-winning Commerce AI agent</b>; enabled E2E checkout, product discovery, upsell, and Paypal-integration through a natural language chat interface.</li>
+            <li>Led and architected the <b>Commerce MCP project</b>: enabling AI-assisted request resolution, CSO remediation, and observability through a unified interface. Signifcantly <b>reduced manual lookup</b> and debug time for support and CSO incidents.</li>
+            <li>Led migration to <a href="https://2023.platformcon.com/talks/adobes-journey-into-building-an-internal-developer-platform" target="_blank" rel="noopener">Ethos Flex</a> for Payments team: modernized CI/CD pipeline with infrasutrcture-as-code, canary-analysis, and built-in security guardrails.
+              <br>Maintained 4 9&rsquo;s reliability across the microservice ecosystem.</li>
           </ul>
-          <div class="resume-entry-tools">
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">Springboot</span>
-            <span class="skill-tag">Kafka</span>
-            <span class="skill-tag">SQS</span>
-            <span class="skill-tag">DynamoDB</span>
-            <span class="skill-tag">S3</span>
-            <span class="skill-tag">Lambda</span>
-            <span class="skill-tag">Argo CI/CD</span>
-            <span class="skill-tag">Prometheus</span>
-            <span class="skill-tag">Grafana</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Google ADK</span>
-            <span class="skill-tag">Ollama</span>
-            <span class="skill-tag">MCP</span>
-          </div>
         </div>
 
         <div class="resume-entry reveal">
@@ -154,19 +137,10 @@ title: Resume
           </div>
           <div class="resume-entry-date">May &ndash; Aug 2023</div>
           <ul>
-            <li>Designed and tested multiple ML classification models (Neural Nets, XGBoost) using Spark, TensorFlow, and Elephas to drive retry cost reduction and reduce model latency by 50% via distributed PySpark RDDs</li>
+            <li>Designed and tested multiple ML classification models (neural nets, XGBoost, decision trees) using Spark, TensorFlow, and Elephas to drive retry cost reduction and reduce model latency by 50% via distributed PySpark RDDs</li>
             <li>Built end-to-end data mining processes on payment data to optimize retry schedule with 42 actionable recommendations</li>
             <li>Onboarded and documented team migration of big data querying processes from Hadoop to Apache Databricks</li>
           </ul>
-          <div class="resume-entry-tools">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">PySpark</span>
-            <span class="skill-tag">TensorFlow</span>
-            <span class="skill-tag">XGBoost</span>
-            <span class="skill-tag">Hadoop</span>
-            <span class="skill-tag">Databricks</span>
-            <span class="skill-tag">SQL</span>
-          </div>
         </div>
 
         <div class="resume-entry reveal">
@@ -200,13 +174,6 @@ title: Resume
             <li>Implemented ETL pipeline processes in Python on Google Cloud Platform, reducing pricing latency by 40%</li>
             <li>Contributed to backend development in agile methodology, improving architecture of SaaS product FELIX</li>
           </ul>
-          <div class="resume-entry-tools">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">GCP</span>
-            <span class="skill-tag">REST API</span>
-            <span class="skill-tag">NoSQL</span>
-            <span class="skill-tag">SQL</span>
-          </div>
         </div>
 
         <div class="resume-entry reveal">
@@ -224,13 +191,6 @@ title: Resume
             <li>Developed ML techniques (k-means, decision tree, PCA, logistic regression) to perform unsupervised customer segmentation analysis on 1M+ Roku Remote Voice users over an eight-week timespan</li>
             <li>Built consumer profiles of distinct Roku Voice user groups, significantly increasing Roku Voice product penetration</li>
           </ul>
-          <div class="resume-entry-tools">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">k-means</span>
-            <span class="skill-tag">PCA</span>
-            <span class="skill-tag">Logistic Regression</span>
-            <span class="skill-tag">Decision Tree</span>
-          </div>
         </div>
 
         <div class="resume-entry reveal">
@@ -249,11 +209,6 @@ title: Resume
             <li>Conducted competitor UI/UX research to heighten perception of user data management rights and portability</li>
             <li>Scraped and analyzed web forums for Airbnb pain points guiding customers through the data privacy lifecycle</li>
           </ul>
-          <div class="resume-entry-tools">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Web Scraping</span>
-            <span class="skill-tag">UI/UX Research</span>
-          </div>
         </div>
 
       </section>
