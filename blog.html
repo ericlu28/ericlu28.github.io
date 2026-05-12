@@ -13,9 +13,13 @@ title: Blog
   <section>
     <ul class="post-list">
       {% for post in site.posts %}
+      {% assign words = post.content | number_of_words %}
+      {% assign reading_time = words | divided_by: 200 %}
+      {% if reading_time < 1 %}{% assign reading_time = 1 %}{% endif %}
       <li class="post-item">
         <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
         <span class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
+        <span class="post-read-time">{{ reading_time }} min read</span>
       </li>
       {% endfor %}
     </ul>

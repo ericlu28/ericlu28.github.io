@@ -521,7 +521,6 @@ section + section {
   align-items: start;
   padding-bottom: 3rem;
   border-top: 1px solid var(--border);
-  margin-left: -4rem;
 }
 
 .resume-sidebar {
@@ -587,11 +586,18 @@ section + section {
   min-width: 90px;
 }
 .post-title {
+  flex: 1;
   font-size: 0.95rem;
   font-weight: 500;
 }
 .post-title a { color: var(--text); }
 .post-title a:hover { color: var(--accent); text-decoration: none; }
+
+.post-read-time {
+  font-size: 0.78rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
 
 .empty-state {
   text-align: center;
@@ -782,7 +788,7 @@ section + section {
   .resume-entry { grid-template-columns: 1fr; }
   .resume-entry-date { text-align: left; }
 
-  .resume-layout { grid-template-columns: 1fr; margin-left: 0; }
+  .resume-layout { grid-template-columns: 1fr; }
   .resume-sidebar {
     padding-right: 0;
     border-right: none;
