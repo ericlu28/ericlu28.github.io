@@ -60,6 +60,12 @@ a:hover {
   padding: 0 1.5rem;
 }
 
+.container-wide {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
 section {
   padding: 3.5rem 0;
 }
